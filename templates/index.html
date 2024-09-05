@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertar Datos</title>
+</head>
+<body>
+    <h1>Insertar Datos en MySQL</h1>
+    <form action="{{ url_for('insert') }}" method="POST">
+        <label for="name">Nombre:</label><br>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="email">Email:</label><br>
+        <input type="text" id="email" name="email"><br><br>
+        <input type="submit" value="Insertar">
+    </form>
+</body>
+</html>
