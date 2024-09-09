@@ -3,16 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insertar Datos</title>
+    <title>CRUD con Flask</title>
 </head>
 <body>
-    <h1>Insertar Datos en MySQL</h1>
+    <h1>Lista de Usuarios</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Acciones</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+                <a href="{{ url_for('edit', id=user.id) }}">Editar</a>
+                <a href="{{ url_for('delete', id=user.id) }}">Borrar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <h2>Agregar Usuario</h2>
     <form action="{{ url_for('insert') }}" method="POST">
-        <label for="name">Nombre:</label><br>
-        <input type="text" id="name" name="name"><br><br>
-        <label for="email">Email:</label><br>
-        <input type="text" id="email" name="email"><br><br>
-        <input type="submit" value="Insertar">
+        <input type="text" name="name" placeholder="Nombre" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <button type="submit">Agregar</button>
     </form>
 </body>
 </html>
